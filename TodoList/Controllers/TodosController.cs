@@ -28,5 +28,13 @@ namespace TodoList.Controllers
             IEnumerable<Todos> objList = _db.Todos as IEnumerable<Todos>;
             return View(objList);
         }
+
+
+        // Create page
+        public IActionResult Create()
+        {
+            
+            return View();
+        }
     }
 }
