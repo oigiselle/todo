@@ -40,7 +40,17 @@
 							<tr> 
 								<td width="50%">@obj.Todo
 								</td>
-								<td></td>
+
+								<td>
+									<div class="w-65 btn btn-group" role="group">
+										
+										<a class="btn btn-success mx-2" asp-controller="Todos" asp-route-Id="@obj.Id" asp-action="Delete" >
+											Mark as Done</a>
+										<a class="btn btn-primary mx-2" asp-controller="Todos" asp-route-Id="@obj.Id" asp-action="Edit" >
+											Edit</a>
+										
+									</div> 
+								</td>
 							</tr>
 
 						}

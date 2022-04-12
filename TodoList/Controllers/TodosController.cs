@@ -30,11 +30,55 @@ namespace TodoList.Controllers
         }
 
 
-        // Create page
+        // Create page - get
         public IActionResult Create()
         {
-            
+
             return View();
+        }
+
+        // Create page - post
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Todos obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Todos.Add(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(obj);
+
+
+        }
+
+        // Edit page - get
+        public IActionResult Edit(int id)
+        {
+         
+            var obj = _db.Todos.Find(id);
+            if (obj == null) 
+            {
+                return NotFound();
+            }
+            return View(obj);
+        }
+
+        // Edit page - post
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Todos obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Todos.Update(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(obj);
+
+
         }
     }
 }
