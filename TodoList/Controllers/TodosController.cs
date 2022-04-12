@@ -80,5 +80,38 @@ namespace TodoList.Controllers
 
 
         }
+
+        // Delete page - get
+        public IActionResult Delete(int? id)
+        {
+
+            var obj = _db.Todos.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            return View(obj);
+        }
+
+        // Delete page - post
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirm(int? id)
+        {
+            var obj = _db.Todos.Find(id);
+
+            if (obj == null) 
+            { 
+                return NotFound(); 
+            }
+            
+                _db.Todos.Remove(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+          
+            
+
+
+        }
     }
 }

@@ -1,0 +1,47 @@
+﻿@model TodoList.Models.Todos
+
+<form method="post" asp-action="DeleteConfirm">
+    <input asp-for="Id" hidden />
+	<div class="p-3">
+    
+		<div class="form-group row">
+			<h2 class="text-info p1-3">Mark Task as Done</h2>
+		</div>
+		<div class="row">
+            <div class="col-8">
+                <div class="form-group row">
+                    <div class="col-4">
+                       <label asp-for="Todo">
+
+                       </label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Todo" disabled class="form-control"/>
+                        
+                    </div>
+
+                </div>
+               
+
+       <br />
+                <div class="form-group row">
+                    <div class="col-8 offset-4 row">
+
+                        <div class="col">
+                           <input type="submit" class="btn btn-success w-100" value="Done!"/> 
+                        </div>
+                        <div class="col">
+                            <a asp-action="Index" class="btn btn-primary w-100" >Back</a>
+                        </div>
+                         
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                @* Keep this empty *@
+            </div>
+        </div>
+
+	</div>
+
+</form>
